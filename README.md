@@ -17,7 +17,7 @@ The outcome was a simple dashboard containing the daily average temperature of t
 
 The data source for this project is an API that provides weather forecasts. The API offers the following features:
 
-* End point ***'[https://api.weatherapi.com/v1/](https://api.weatherapi.com/v1/)'***
+* End point ***'[weatherapi]'***
 * Parameters 
     * ***'location'***:  Name of the location (optional).
     * ***'latitude'*** & ***'longitude'***:  Geographical coordinates of the location (optional).
