@@ -1,0 +1,31 @@
+name: ETL Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Specify the Python version
+
+      - name: Install dependencies
+        run: pip install pandas requests sqlalchemy
+
+      - name: Run ETL script
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+          STOCK_API_KEY: ${{ secrets.STOCK_API_KEY }}
+          DB_URL: ${{ secrets.DB_URL }}
+        run: python etl.py $WEATHER_API_KEY $STOCK_API_KEY $DB_URL
